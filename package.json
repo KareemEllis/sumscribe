@@ -15,8 +15,11 @@
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@mui/icons-material": "^5.15.4",
     "@mui/material-nextjs": "^5.15.3",
+    "dotenv": "^16.3.1",
     "next": "14.0.4",
+    "openai": "^4.0.0",
     "react": "^18",
+    "react-audio-player": "^0.17.0",
     "react-dom": "^18"
   },
   "devDependencies": {

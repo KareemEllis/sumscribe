@@ -16,7 +16,8 @@ import AdbIcon from '@mui/icons-material/Adb'
 
 const pages = [
     {label: 'Dashboard', link: '/dashboard'}, 
-    {label: 'My Scribes', link: '/scribes'}
+    {label: 'My Scribes', link: '/scribes'},
+    {label: 'Starred', link: '/sribes/starred'}
 ]
 
 function DashboardNavbar() {
@@ -43,8 +44,8 @@ function DashboardNavbar() {
     }
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl">
+        <AppBar position="static" sx={{ marginBottom: 4 }}>
+            <Container maxWidth="lg">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
