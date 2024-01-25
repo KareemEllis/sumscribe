@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
+import { FcGoogle } from 'react-icons/fc'
+
 export default function Login() {
     
     const handleSubmit = (event) => {
@@ -22,6 +24,7 @@ export default function Login() {
             email: data.get('email'),
             password: data.get('password'),
         })
+
     }
 
     return (
@@ -72,7 +75,14 @@ export default function Login() {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                            Sign In
+                        Sign In
+                    </Button>
+                    <Button
+                        fullWidth
+                        startIcon={<FcGoogle />}
+                        sx={{ mb: 2, color: '#1F1F1F', background: '#F2F2F2' }}
+                    >
+                        Sign in with Google
                     </Button>
                     <Grid container>
                         <Grid item xs>
