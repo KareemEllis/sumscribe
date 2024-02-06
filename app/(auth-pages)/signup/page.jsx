@@ -1,19 +1,18 @@
 'use client'
 import React, { useState } from 'react'
-import Avatar from '@mui/material/Avatar'
+import Image from 'next/image'
+
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import Alert from '@mui/material/Alert'
-
 import Link from '@mui/material/Link'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
-import { FcGoogle } from 'react-icons/fc'
+import GoogleButton from '../GoogleButton'
 
 export default function Singup() {
     const [firstName, setFirstName] = useState('')
@@ -179,8 +178,6 @@ export default function Singup() {
             setAlertSeverity('error')
             console.log('Error during sign up')
         }
-
-        
     }
 
     return (
@@ -194,10 +191,9 @@ export default function Singup() {
                     alignItems: 'center',
                 }}
             >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
+                <Image src={'/SumscribeLogo.png'} alt={'Sumscribe Logo'} width={64} height={64}/>
+
+                <Typography component="h1" variant="h5" mt={2}>
                         Sign up
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
@@ -268,14 +264,9 @@ export default function Singup() {
                     >
                         Sign Up
                     </Button>
-                    <Button
-                        fullWidth
-                        disabled={isSubmitting}
-                        startIcon={<FcGoogle />}
-                        sx={{ mb: 2, color: '#1F1F1F', background: '#F2F2F2' }}
-                    >
-                        Sign in with Google
-                    </Button>
+
+                    <GoogleButton isSubmitting={isSubmitting} />
+                    
                     <Grid container justifyContent="flex-end">
                         <Grid item>
                             <Link href="login" variant="body2">
