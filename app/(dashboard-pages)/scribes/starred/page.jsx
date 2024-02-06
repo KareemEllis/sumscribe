@@ -6,13 +6,17 @@ import TranscriptionListing from '@/app/components/TranscriptionListing'
 
 import { getAllTranscriptions } from '@/data/transcription'
 
-export default async function Scribes() {
+export default async function StarredTranscriptions() {
     const transcriptions = await getAllTranscriptions()
+
+    const starredTranscriptions = await transcriptions.filter((item) => {
+        return item.starred
+    })
 
     return (
         <Container component='main' maxWidth="lg">
             Scribes
-            <TranscriptionListing transcriptions={transcriptions}/>
+            <TranscriptionListing transcriptions={starredTranscriptions}/>
         </Container>
     )
 }

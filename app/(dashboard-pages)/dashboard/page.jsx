@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import RecentScribes from './RecentScribes'
+import TranscriptionListing from '@/app/components/TranscriptionListing'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -11,23 +11,37 @@ import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 
-export default function Dashboard() {
+import { getAllTranscriptions } from '@/data/transcription'
+
+export default async function Dashboard() {
+
+    const transcriptions = await getAllTranscriptions()
+    
+    const summarizedTranscriptions = await transcriptions.filter((item) => {
+        return item.summary != ''
+    })
+    
+    const starredTranscriptions = await transcriptions.filter((item) => {
+        return item.starred
+    })
+
+    const recentTranscriptions = transcriptions.slice(-3)
 
     const metricItems = [
         {
-            count: 3,
+            count: transcriptions.length,
             description: 'The number of transcriptions created',
             link: '/scribes',
             label: 'View Transcriptions'
         },
         {
-            count: 2,
+            count: summarizedTranscriptions.length,
             description: 'The number of summaries created',
             link: '/scribes',
             label: 'View Summaries'
         },
         {
-            count: 0,
+            count: starredTranscriptions.length,
             description: 'The number of scribes starred',
             link: '/starred',
             label: 'View Starred'
@@ -84,10 +98,10 @@ export default function Dashboard() {
                 }
             </Grid>
             <Typography variant='h5' fontWeight='medium' color='primary' mb={4}>
-                Recent Scribes
+                Recent Transcriptions
             </Typography>
 
-            <RecentScribes />
+            <TranscriptionListing transcriptions={recentTranscriptions}/>
         </Container>
     )
 }

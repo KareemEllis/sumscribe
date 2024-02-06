@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-// import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -15,6 +15,7 @@ import ScribeProgressSnackbar from './ScribeProgressSnackbar'
 import ReactAudioPlayer from 'react-audio-player'
 
 export default function CreateScribe() { 
+    const router = useRouter()
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const [title, setTitle] = useState('')
@@ -99,7 +100,9 @@ export default function CreateScribe() {
 
             if (response.ok) {
                 const result = await response.json()
-                console.log('Transcription:', result.transcription)
+                console.log(result)
+                router.push(`/scribes/${result.id}`)
+                router.refresh()
                 setSnackbarOpen(true)
                 setSnackbarSeverity('success')
             } 
