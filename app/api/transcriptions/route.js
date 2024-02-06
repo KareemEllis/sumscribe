@@ -1,9 +1,17 @@
 import { NextResponse } from 'next/server'
 
+import { auth } from '@/auth'
+import { createTranscription, getAllTranscriptions } from '@/data/transcription'
 require('dotenv').config()
 
+//CREATE NEW TRANSCRIPTION
 export async function POST(req) {
     try {
+        const session = await auth()
+        if (!session.user) {
+            return NextResponse.json({ error: 'User not logged in.' }, { status: 401 })
+        }
+
         const data = await req.formData()
         const title = data.get('title')
         const audioFile = data.get('file')
@@ -27,8 +35,6 @@ export async function POST(req) {
         formData.append('model', 'whisper-1')
         formData.append('file', audioFile)
 
-        console.log('FormData:', formData)
-
         const res = await fetch('https://api.openai.com/v1/audio/transcriptions', {
             headers: {
                 Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -38,14 +44,19 @@ export async function POST(req) {
         })
 
         if(!res.ok) {
-            return NextResponse.json({ error: 'Internal Server Error. Transcription Failed.' }, { status: 500 }) 
+            return NextResponse.json({ error: 'Transcription Failed.' }, { status: 500 }) 
         }
 
         const transcription = await res.json()
-
         console.log(transcription)
 
-        return NextResponse.json({ transcription }, { status: 200 })
+        const savedTranscription = await createTranscription(title, transcription.text, audioFile.name)
+
+        if (!savedTranscription) {
+            return NextResponse.json({ error: 'Failed to save transcription.' }, { status: 500 })
+        }
+
+        return NextResponse.json(savedTranscription, { status: 201 })
 
     } catch (error) {
         console.error('Error:', error)
