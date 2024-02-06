@@ -1,14 +1,25 @@
 import { NextResponse } from 'next/server'
+
 import OpenAI from 'openai'
 
+import { auth } from '@/auth'
+import { getTranscription, updateTranscription } from '@/data/transcription'
 
 require('dotenv').config()
 
-export async function POST(req) {
-
-    const inputText = req.json()
-    
+export async function POST(req, { params }) {
     try {
+        const session = await auth()
+        if (!session.user) {
+            return NextResponse.json({ error: 'User not logged in.' }, { status: 401 })
+        }
+        
+        const id = parseInt(params.id)
+
+        const transcriptionData = await getTranscription(id)
+        console.log(transcriptionData)
+        const inputText = transcriptionData.transcription
+
         // Calculate max_tokens based on input text length
         const maxTokensMultiplier = 0.5 // Adjust based on your preference
         let maxTokens = Math.ceil(inputText.length * maxTokensMultiplier)
@@ -45,7 +56,14 @@ export async function POST(req) {
         const summary = res.choices[0].message.content
         console.log(summary)
 
-        return NextResponse.json({ summary }, { status: 200 })
+        const newTranscriptionData = {
+            ...transcriptionData,
+            summary
+        }
+
+        const updatedTranscription = await updateTranscription(transcriptionData.id, newTranscriptionData)
+
+        return NextResponse.json(updatedTranscription , { status: 200 })
 
     } catch (error) {
         console.error('Error:', error)
