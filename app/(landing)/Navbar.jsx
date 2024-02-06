@@ -1,13 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
-import AdbIcon from '@mui/icons-material/Adb'
-
 
 function Navbar() {
 
@@ -21,25 +20,23 @@ function Navbar() {
         >
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
-                    <AdbIcon color='primary' />
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        color='primary'
+                    <Box
                         sx={{
                             mr: 'auto',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                         }}
                     >
-                        SUMSCRIBE
-                    </Typography>
+                        <Link href={'/'}>
+                            <Image src={'/SumscribeLogo.png'} alt={'Sumscribe Logo'} width={64} height={64}/>
+                        </Link>
+                    </Box>
                     <Box sx={{ display: 'flex' }}>
-                        <Button variant="outlined">
+                        <Button variant="text">
                             <Link  href='/login'>Login</Link>
                         </Button>
 
-                        <Button variant="contained" sx={{ ml: 2}}>
+                        <Button variant="outlined" sx={{ ml: 2}}>
                             <Link href='signup'>Sign Up</Link>
                         </Button>
    

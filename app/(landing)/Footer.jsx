@@ -1,8 +1,12 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
 
 export default function Footer() {
     return (
@@ -13,21 +17,21 @@ export default function Footer() {
                 // backgroundColor: 'secondary.main',
                 backgroundColor: '#f7f7f7',
                 marginTop: '100px',
-                paddingTop: '1rem',
-                paddingBottom: '1rem',
+                py: 5 
             }}
         >
-            <Container maxWidth="lg">
-                <Grid container direction="column" alignItems="center">
-                    <Grid item xs={12}>
-                        LOGO
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Typography color="textSecondary" variant="subtitle1">
-                            {`© ${new Date().getFullYear()} SumScribe`}
-                        </Typography>
-                    </Grid>
-                </Grid>
+            <Container 
+                maxWidth="lg" 
+                sx={{ textAlign: 'center' }}
+            >
+                <Image src={'/SumscribeLogo.png'} alt={'Sumscribe Logo'} width={64} height={64} style={{ margin: 'auto' }}/>
+
+                <Divider sx={{ my: 3 }} />
+                    
+                <Typography color="textSecondary" variant="body2">
+                    {`© ${new Date().getFullYear()} SumScribe. All rights reserved.`}
+                </Typography>
+
             </Container>
         </Box>
     )

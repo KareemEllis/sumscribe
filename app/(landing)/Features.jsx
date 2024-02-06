@@ -30,14 +30,30 @@ export default function Features() {
     return (
         <>
             <Typography variant="h3" fontWeight='bold' align="center" mb={6}>
-                Features
+                How It Works
             </Typography>
 
             <Grid container spacing={4} justifyContent="center">
                 {
-                    featureItems.map((feature) => (
-                        <Grid key={feature.title} item xs={7} md={4}>
-                            <Card sx={{ backgroundColor: '#f7f7f7', padding: '15px', minHeight: '325px' }}>
+                    featureItems.map((feature, index) => (
+                        <Grid 
+                            key={feature.title} 
+                            item xs={7} 
+                            md={4}
+                            sx={{ 
+                                marginTop: { md: 
+                                    index === 1 ? '25px' : '0'
+                                } 
+                            }}
+                        >
+                            <Card 
+                                variant='outlined'
+                                sx={{ 
+                                    padding: '15px', 
+                                    minHeight: '325px',
+                                    textAlign: 'center'
+                                }}
+                            >
                                 <CardContent>
                                     {feature.icon}
                                     <Typography variant="h5" gutterBottom>
@@ -52,8 +68,6 @@ export default function Features() {
                         </Grid>
                     ))
                 }
-                
-
             </Grid>
         </>
     )
