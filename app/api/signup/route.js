@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 import { db } from '@/lib/db'
 import { getUserByEmail } from '@/data/user'
+import { generateVerificationToken } from '@/lib/tokens'
+import { sendVerificationEmail } from '@/lib/mail'
 
 export async function POST(req) {
     try {
@@ -32,8 +34,6 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Password must be at least 8 characters long.' }, { status: 400 })
         }
 
-        
-        //VALIDATE FIELDS HERE
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -51,9 +51,11 @@ export async function POST(req) {
             }
         })
         
-        // TODO: Send Verification token email
+        const verificationToken = await generateVerificationToken(email)
+        
+        await sendVerificationEmail(verificationToken.email, verificationToken.token)
 
-        return NextResponse.json({ message: 'User Created' }, { status: 201 })
+        return NextResponse.json({ message: 'Confirmation email sent!' }, { status: 201 })
     
     } catch (error) {
         console.error('Error:', error)
