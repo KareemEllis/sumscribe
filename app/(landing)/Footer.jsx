@@ -1,10 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 
