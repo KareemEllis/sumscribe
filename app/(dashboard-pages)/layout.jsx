@@ -1,14 +1,22 @@
 import React from 'react'
-import DashboardNavbar from './dashboard/DashboardNavbar'
+import DashboardNavbar from './DashboardNavbar'
 
-export default function DashboardLayout({ children }) {
+import { auth } from '@/auth'
+import { SessionProvider } from 'next-auth/react'
+
+export default async function DashboardLayout({ children }) {
 
     //Check session, redirect to login page if logged in
+    const session = await auth()
     
     return (
         <>
-            <DashboardNavbar />
-            {children}
+            <SessionProvider session={session}>
+                <DashboardNavbar />
+                
+                {children}
+            </SessionProvider>
+            
         </>
     )
 }
