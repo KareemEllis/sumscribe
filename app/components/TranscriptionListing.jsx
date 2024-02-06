@@ -8,9 +8,6 @@ import InfoIcon from '@mui/icons-material/Info'
 import TranscriptionCard from '@/app/components/TranscriptionCard'
 
 export default async function TranscriptionListing({ transcriptions }) {
-
-    console.log(transcriptions)
-
     const formattedTranscriptions = transcriptions.map((transcription) => {
         
         const dateObject = new Date(transcription.date_created)

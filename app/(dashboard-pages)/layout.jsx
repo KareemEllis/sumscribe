@@ -1,5 +1,5 @@
 import React from 'react'
-import DashboardNavbar from './DashboardNavbar'
+import DashboardDrawer from './DashboardDrawer'
 
 import { auth } from '@/auth'
 import { SessionProvider } from 'next-auth/react'
@@ -12,9 +12,9 @@ export default async function DashboardLayout({ children }) {
     return (
         <>
             <SessionProvider session={session}>
-                <DashboardNavbar />
-                
-                {children}
+                <DashboardDrawer>
+                    {children}
+                </DashboardDrawer>
             </SessionProvider>
             
         </>
