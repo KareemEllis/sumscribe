@@ -24,7 +24,12 @@ export default async function TranscriptionListing({ transcriptions }) {
         <Grid container spacing={4} sx={{mb: 4}}>
             {
                 formattedTranscriptions && formattedTranscriptions.map((transcription) => (
-                    <Grid key={transcription.id} item xs={8} md={4}>
+                    <Grid 
+                        key={transcription.id} 
+                        item xs={8} 
+                        md={4}
+                        sx={{ margin: { xs: 'auto' } }}
+                    >
                         <TranscriptionCard transcription={transcription}/>
                     </Grid>
                 ))

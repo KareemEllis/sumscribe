@@ -78,7 +78,7 @@ export default async function Dashboard() {
                 {
                     metricItems.map((metric) => (
                         <Grid key={metric.label} item xs={8} md={4}>
-                            <Card sx={{ minWidth: 200 }}>
+                            <Card variant="outlined" sx={{ minWidth: 200 }}>
                                 <CardContent>
                                     <Typography variant='h4' fontWeight='bold' gutterBottom>
                                         {metric.count}

@@ -99,7 +99,7 @@ export default function EditTranscriptionForm({ transcription }) {
                 method: 'PATCH',
                 body: JSON.stringify(newTranscriptionData),
             })
-            console.log('Done Fetching')
+
             setIsSubmitting(false)
 
             if (response.ok) {
