@@ -113,11 +113,11 @@ export default function ScribeDisplay({ data }) {
             <Box sx={{ display: 'flex', mb: 2 }}>
                 {data.starred ?
                     <>
-                        <StarIcon sx={{ mr: 1 }} /> <Typography variant='body1'>Starred</Typography>
+                        <StarIcon sx={{ mr: 1 }} /> <Typography variant='body1'>Favorited</Typography>
                     </>
                     :
                     <>
-                        <StarOutlineIcon sx={{ mr: 1 }} /> <Typography variant='body1'>Not Starred</Typography>
+                        <StarOutlineIcon sx={{ mr: 1 }} /> <Typography variant='body1'>Not Favorited</Typography>
                     </>
                 }
             </Box>

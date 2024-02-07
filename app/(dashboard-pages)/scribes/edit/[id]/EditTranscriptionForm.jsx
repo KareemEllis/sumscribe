@@ -224,19 +224,24 @@ export default function EditTranscriptionForm({ transcription }) {
                 }
             </Box>
             
-            <Box sx={{ mb: 1 }}>
-                <IconButton onClick={() => setStarred(prevStarred => !prevStarred)}>
-                    {starred ?
-                        <>
-                            <StarIcon /> <Typography variant='body1'>Starred</Typography>
-                        </>
-                        :
-                        <>
-                            <StarOutlineIcon /> <Typography variant='body1'>Not Starred</Typography>
-                        </>
-                    }
-                </IconButton>
+            <Box sx={{ mb: 2 }}>
+                <Button 
+                    size="small" 
+                    onClick={() => setStarred(prevStarred => !prevStarred)}
+                    disabled={isSubmitting}
+                    startIcon={
+                        starred?
+                            <StarIcon />
+                            :
+                            <StarOutlineIcon />
+                    } 
+                    sx={{ color: '#000' }}
+                >
+                Favorite
+                </Button>
             </Box>
+
+            
             
 
             <Button 
