@@ -207,7 +207,6 @@ export default function EditTranscriptionForm({ transcription }) {
                 // />
                 <div>
                     <MarkdownEditor summary={summary} setSummary={setSummary} />
-                    <ViewSummary summary={summary} />
                 </div>
                 }
 

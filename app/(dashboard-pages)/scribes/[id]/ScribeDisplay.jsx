@@ -15,6 +15,7 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Snackbar from '@mui/material/Snackbar'
+import DownloadIcon from '@mui/icons-material/Download'
 
 import ViewSummary from '@/app/components/ViewSummary'
 import DeleteTranscription from '@/app/components/DeleteTranscription'
@@ -38,6 +39,13 @@ export default function ScribeDisplay({ data }) {
         setSnackbarOpen(false)
     }
 
+    const downloadTextFile = (text, fileName, fileType) => {
+        const blob = new Blob([text], { type: `text/${fileType}` })
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(blob)
+        link.download = fileName
+        link.click()
+    }
 
     const handleSummarize = async () => {
         console.log('Summarizing')
@@ -88,11 +96,9 @@ export default function ScribeDisplay({ data }) {
 
                 {/* Tab for Summary Text Field */}
                 {selectedTab == 1 && data.summary &&
-                // <Typography variant="body1" gutterBottom>
-                //     {data.summary}
-                // </Typography>
                 <ViewSummary summary={data.summary} />
                 }
+                
                 {/* No Summary created yet */}
                 {selectedTab == 1 && !data.summary &&
                 <Box textAlign='center' width='100%' mt={8} mb={8}>
@@ -129,7 +135,26 @@ export default function ScribeDisplay({ data }) {
             </Button>
             <DeleteTranscription id={data.id} isSubmitting={isSubmitting} setIsSubmitting={setIsSubmitting}/>
             
+            <Box sx={{ mt: 3 }}>
+                <Button 
+                    size="small"
+                    variant='contained' 
+                    onClick={() => downloadTextFile(data.transcription, `${data.title}_transcription.txt`, 'plain')}
+                    startIcon={<DownloadIcon />}
+                    sx={{ mr: 2 }}
+                >
+                    Transcription
+                </Button>
 
+                <Button 
+                    size="small"
+                    variant='contained' 
+                    onClick={() => downloadTextFile(data.summary, `${data.title}_summary.md`, 'markdown')}
+                    startIcon={<DownloadIcon />}
+                >
+                    Summary
+                </Button>
+            </Box>
 
             <Snackbar
                 open={snackbarOpen}

@@ -14,13 +14,13 @@ export default async function ScribeDetails({ params }) {
         notFound()
     }
 
-    
-
     return (
         <Container component='main' maxWidth="lg">
             <Typography variant='h5' fontWeight='medium' color='primary' gutterBottom>
                 Title
             </Typography>
+
+
             <Typography variant='body1'  gutterBottom>
                 {transcription.title}
             </Typography>

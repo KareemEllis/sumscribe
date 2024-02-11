@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 import { auth } from '@/auth'
-import { createTranscription, getAllTranscriptions } from '@/data/transcription'
+import { createTranscription } from '@/data/transcription'
 require('dotenv').config()
 
 //CREATE NEW TRANSCRIPTION
@@ -48,7 +48,6 @@ export async function POST(req) {
         }
 
         const transcription = await res.json()
-        console.log(transcription)
 
         const savedTranscription = await createTranscription(title, transcription.text, audioFile.name)
 

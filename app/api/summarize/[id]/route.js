@@ -17,7 +17,7 @@ export async function POST(req, { params }) {
         const id = parseInt(params.id)
 
         const transcriptionData = await getTranscription(id)
-        console.log(transcriptionData)
+
         const inputText = transcriptionData.transcription
 
         // Calculate max_tokens based on input text length
@@ -39,7 +39,7 @@ export async function POST(req, { params }) {
             messages: [
                 {
                     'role': 'system',
-                    'content': 'You will be provided with text that was transcribed from speech, and your task is to summarize what the text is about.'
+                    'content': 'Summarize the given text and format it in markdown.\n\n##### Formatting Requirements:\n- Include titles, headers, bold, italic, quotes, and lists where possible.\n- Use markdown syntax for proper formatting.\n\n##### Output Expectation:\nProvide a concise summary of the given text, formatted in markdown, following the specified requirements.'
                 },
                 {
                     'role': 'user',
@@ -54,7 +54,6 @@ export async function POST(req, { params }) {
         })
 
         const summary = res.choices[0].message.content
-        console.log(summary)
 
         const newTranscriptionData = {
             ...transcriptionData,
