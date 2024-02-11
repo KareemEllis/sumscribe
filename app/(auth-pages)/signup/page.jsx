@@ -197,6 +197,7 @@ export default function Singup() {
                         Sign up
                 </Typography>
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                    <Alert severity='info' sx={{ my: 2 }}>Credentials Signup currently not available!</Alert>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
                             <TextField

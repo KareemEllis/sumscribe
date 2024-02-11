@@ -140,6 +140,7 @@ export default function Login() {
                         Sign in
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <Alert severity='info' sx={{ my: 2 }}>Credentials Login currently not available!</Alert>
                     <TextField
                         margin="normal"
                         fullWidth
