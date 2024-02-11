@@ -14,10 +14,10 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import StarIcon from '@mui/icons-material/Star'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
+import Alert from '@mui/material/Alert'
 
 import DeleteTranscription from '@/app/components/DeleteTranscription'
 import MarkdownEditor from './MarkdownEditor'
-import ViewSummary from '@/app/components/ViewSummary'
 
 export default function EditTranscriptionForm({ transcription }) {
     const router = useRouter()
@@ -32,6 +32,8 @@ export default function EditTranscriptionForm({ transcription }) {
         transcriptionText: { error: false, text: '' },
         summary: { error: false, text: '' }
     })
+
+    const [rateLimitAlert, setRateLimitAlert] = useState(false)
 
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarText, setSnackbarText] = useState('')
@@ -148,6 +150,10 @@ export default function EditTranscriptionForm({ transcription }) {
                 console.error('Error:',  result.error)
                 setSnackbarOpen(true)
                 setSnackbarText(result.error)
+
+                if (response.status == 429) {
+                    setRateLimitAlert(true)
+                }
             }
         } catch (error) {
             console.error('Error:', error)
@@ -195,19 +201,7 @@ export default function EditTranscriptionForm({ transcription }) {
 
                 {/* Tab for Summary Text Field */}
                 {selectedTab == 1 && transcription.summary &&
-                // <TextField
-                //     value={summary}
-                //     onChange={(e) => setSummary(e.target.value)}
-                //     error={errors.summary.error}
-                //     helperText={errors.summary.text}
-                //     variant="outlined"
-                //     fullWidth
-                //     multiline
-                //     rows={15}
-                // />
-                <div>
-                    <MarkdownEditor summary={summary} setSummary={setSummary} />
-                </div>
+                <MarkdownEditor summary={summary} setSummary={setSummary} />
                 }
 
 
@@ -225,6 +219,12 @@ export default function EditTranscriptionForm({ transcription }) {
                     >
                         Summarize
                     </Button>
+
+                    {rateLimitAlert &&
+                    <Alert sx={{ mt: 2, maxWidth: 400, mx: 'auto' }} severity="info">
+                        Daily limit exceeded! Try again tomorrow.
+                    </Alert>
+                    }
                 </Box>
                 }
             </Box>

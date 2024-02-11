@@ -7,11 +7,27 @@ import { getTranscription, updateTranscription } from '@/data/transcription'
 
 require('dotenv').config()
 
+import { Ratelimit } from '@upstash/ratelimit' // for deno: see above
+import { Redis } from '@upstash/redis' // see below for cloudflare and fastly adapters
+
+// Create a new ratelimiter, that allows 10 requests per 10 seconds
+const summarizeRatelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(3, '1 d'),
+    analytics: true,
+})
+
 export async function POST(req, { params }) {
     try {
         const session = await auth()
         if (!session.user) {
             return NextResponse.json({ error: 'User not logged in.' }, { status: 401 })
+        }
+
+        const { success } = await summarizeRatelimit.limit(session.user.id)
+
+        if (!success) {
+            return NextResponse.json({ error: 'Transcription limit exceeded.' }, { status: 429 })
         }
         
         const id = parseInt(params.id)

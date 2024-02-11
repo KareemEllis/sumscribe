@@ -23,7 +23,7 @@ export default function ScribeSnackbar({ snackbarOpen, setSnackbarOpen, severity
                         variant="filled"
                         sx={{ width: '100%' }}
                     >
-                        SumScribe Completed!
+                        Transcription Completed!
                     </Alert>
                 </Snackbar>
             }
@@ -36,7 +36,7 @@ export default function ScribeSnackbar({ snackbarOpen, setSnackbarOpen, severity
                         variant="filled"
                         sx={{ width: '100%' }}
                     >
-                        SumScribe Failed.
+                        Transcription Failed.
                     </Alert>
                 </Snackbar>
             }

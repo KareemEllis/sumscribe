@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography'
 import Input from '@mui/material/Input'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import Alert from '@mui/material/Alert'
 
-import ScribeSnackbar from './ScribeSnackbar'
+
+import Snackbar from '@mui/material/Snackbar'
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close'
 import ScribeProgressModal from './ScribeProgressModal'
 import ScribeProgressSnackbar from './ScribeProgressSnackbar'
 
@@ -25,12 +29,22 @@ export default function CreateScribe() {
     const [selectedFile, setSelectedFile] = useState(null)
     const [selectedFileError, setSelectedFileError] = useState(false)
     const [selectedFileErrorText, setSelectedFileErrorText] = useState('')
+
+    const [rateLimitAlert, setRateLimitAlert] = useState(false)
   
     const [snackbarOpen, setSnackbarOpen] = useState(false)
-    const [snackbarSeverity, setSnackbarSeverity] = useState('success')
+    const [snackbarText, setSnackbarText] = useState('')
    
     const [modalOpen, setModalOpen] = useState(false)
     const [progressSnackbarOpen, setProgressSnackbarOpen] = useState(false)
+
+    const handleSnackbarClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return
+        }
+    
+        setSnackbarOpen(false)
+    }
 
     const checkErrors = async () => {
         let numErrors = 0
@@ -104,16 +118,24 @@ export default function CreateScribe() {
                 router.push(`/scribes/${result.id}`)
                 router.refresh()
                 setSnackbarOpen(true)
-                setSnackbarSeverity('success')
+                setSnackbarText('Transcription Complete!')
             } 
             else {
                 // Handle the error case
-                console.error('Error:', response.status, response.error)
+                const result = await response.json()
+                console.error('Error:',  result.error)
                 setSnackbarOpen(true)
-                setSnackbarSeverity('error')
+                setSnackbarText(result.error)
+
+                if (response.status == 429) {
+                    setRateLimitAlert(true)
+                }
             }
         } catch (error) {
             console.error('Error:', error)
+            setIsSubmitting(false)
+            setSnackbarOpen(true)
+            setSnackbarText('transcription Failed')
         }
     }
 
@@ -128,6 +150,10 @@ export default function CreateScribe() {
             <Typography variant="h5" fontWeight='bold'>
                 Create new Scribe
             </Typography>
+
+            {rateLimitAlert &&
+            <Alert sx={{ mt: 2 }} severity="info">Daily transcribe limit exceeded! Try again tomorrow.</Alert>
+            }
 
             <TextField 
                 value={title}
@@ -177,12 +203,32 @@ export default function CreateScribe() {
                 Transcribe
             </Button>
 
-
+            
+            {/* Progress Feedback */}
             {modalOpen &&
                 <ScribeProgressModal modalOpen={modalOpen} handleModalClose={handleModalClose} />
             }
+
             <ScribeProgressSnackbar progressSnackbarOpen={progressSnackbarOpen} setSnackbarOpen={setProgressSnackbarOpen}/>
-            <ScribeSnackbar snackbarOpen={snackbarOpen} setSnackbarOpen={setSnackbarOpen} severity={snackbarSeverity} />
+            
+
+            {/* Result Feedback */}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+                message={snackbarText}
+                action={
+                    <IconButton
+                        size="small"
+                        aria-label="close"
+                        color="inherit"
+                        onClick={handleSnackbarClose}
+                    >
+                        <CloseIcon fontSize="small" />
+                    </IconButton>
+                }
+            />
         </Container>
     )
 }

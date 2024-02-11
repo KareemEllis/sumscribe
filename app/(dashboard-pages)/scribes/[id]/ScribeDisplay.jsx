@@ -11,6 +11,7 @@ import InfoIcon from '@mui/icons-material/Info'
 import Button from '@mui/material/Button'
 import StarIcon from '@mui/icons-material/Star'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
+import Alert from '@mui/material/Alert'
 
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
@@ -26,6 +27,8 @@ export default function ScribeDisplay({ data }) {
 
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarText, setSnackbarText] = useState('')
+
+    const [rateLimitAlert, setRateLimitAlert] = useState(false)
 
     const [selectedTab, setSelectedTab] = useState(0)
     const handleTabChange = (event, newTab) => {
@@ -69,6 +72,10 @@ export default function ScribeDisplay({ data }) {
                 console.error('Error:',  result.error)
                 setSnackbarOpen(true)
                 setSnackbarText(result.error)
+
+                if (response.status == 429) {
+                    setRateLimitAlert(true)
+                }
             }
         } catch (error) {
             console.error('Error:', error)
@@ -113,6 +120,12 @@ export default function ScribeDisplay({ data }) {
                     >
                         Summarize
                     </Button>
+
+                    {rateLimitAlert &&
+                    <Alert sx={{ mt: 2, maxWidth: 400, mx: 'auto' }} severity="info">
+                        Daily limit exceeded! Try again tomorrow.
+                    </Alert>
+                    }
                 </Box>
                 }
 
