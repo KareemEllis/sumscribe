@@ -148,6 +148,7 @@ export default function Login() {
                         error={errors.email.error}
                         helperText={errors.email.text}
                         label="Email Address"
+                        disabled={true}
                     />
                     <TextField
                         margin="normal"
@@ -158,6 +159,7 @@ export default function Login() {
                         helperText={errors.password.text}
                         label="Password"
                         type="password"
+                        disabled={true}
                     />
 
                     {alertMessage != '' && 
@@ -167,8 +169,10 @@ export default function Login() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        disabled={isSubmitting}
+                        disabled={true}
+                        // disabled={isSubmitting}
                         sx={{ mt: 3, mb: 2 }}
+                        
                     >
                         Sign In
                     </Button>

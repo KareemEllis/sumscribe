@@ -7,7 +7,7 @@ export default function LottieAnimation() {
         <Player
             autoplay
             loop
-            src="https://lottie.host/e2dc2ca2-57cc-4105-a903-022f6304e57f/BEIhYJ4kZ9.json"
+            src="https://lottie.host/85357f72-c629-4e73-9601-96a351e96bbc/wkllo3te4A.json"
             style={{ width: '400px', height: '400px' }}
             speed={0.7}
             resizeMode='cover'

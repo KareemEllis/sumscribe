@@ -207,6 +207,7 @@ export default function Singup() {
                                 helperText={errors.firstName.text}
                                 label="First Name"
                                 autoFocus
+                                disabled={true}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -217,6 +218,7 @@ export default function Singup() {
                                 error={errors.lastName.error}
                                 helperText={errors.lastName.text}
                                 label="Last Name"
+                                disabled={true}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -227,6 +229,7 @@ export default function Singup() {
                                 error={errors.email.error}
                                 helperText={errors.email.text}
                                 label="Email Address"
+                                disabled={true}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -238,6 +241,7 @@ export default function Singup() {
                                 helperText={errors.password.text}
                                 label="Password"
                                 type="password"
+                                disabled={true}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -249,6 +253,7 @@ export default function Singup() {
                                 helperText={errors.confirmPassword.text}
                                 label="Confirm Password"
                                 type="password"
+                                disabled={true}
                             />
                         </Grid>
                     </Grid>
@@ -259,7 +264,8 @@ export default function Singup() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        disabled={isSubmitting}
+                        disabled={true}
+                        // disabled={isSubmitting}
                         sx={{ mt: 2, mb: 2 }}
                     >
                         Sign Up

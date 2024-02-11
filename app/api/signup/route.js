@@ -8,6 +8,8 @@ import { sendVerificationEmail } from '@/lib/mail'
 
 export async function POST(req) {
     try {
+        return NextResponse.json({ error: 'Credentials signup currently not available.' }, { status: 405 })
+
         const data = await req.json()
 
         const name = data.name.trim()

@@ -11,6 +11,8 @@ import { sendVerificationEmail } from '@/lib/mail'
 
 export async function POST(req) {
     try {
+        return NextResponse.json({ error: 'Credentials login currently not available.' }, { status: 405 })
+
         const data = await req.json()
         const email = data.email
         const password = data.password
