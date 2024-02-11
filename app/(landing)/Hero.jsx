@@ -9,7 +9,7 @@ export default function Hero() {
         <Grid container spacing={2} sx={{ my: '70px' }}>
             <Grid item xs={12} md={6} sx={{ textAlign: {xs: 'center', md: 'left'} }}>
                 <Typography variant="h2" fontWeight='800'>
-                    Unlock <Typography variant="span" color='primary'>Seamless Learning</Typography> with SumScribe using AI
+                    Unlock <Typography variant="span" color='secondary'>Seamless Learning</Typography> with SumScribe using AI
                 </Typography>
                 <Typography variant="subtitle1" my={3} color='#4a4949'>
                     Revolutionize your educational journey with SumScribe, 
