@@ -36,7 +36,7 @@ const pages = [
     {label: 'Dashboard', link: '/dashboard', icon: <DashboardIcon />}, 
     {label: 'My Scribes', link: '/scribes', icon: <NotesIcon />},
     {label: 'New Scribe', link: '/scribes/new', icon: <CreateIcon />},
-    {label: 'Starred', link: '/scribes/starred', icon: <StarIcon />},
+    {label: 'Favorites', link: '/scribes/starred', icon: <StarIcon />},
 ]
 
 function getLabelByLink(link) {
