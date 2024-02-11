@@ -69,7 +69,7 @@ export default async function Dashboard() {
                 >
                     Metrics
                 </Typography>
-                <Button variant="contained">
+                <Button variant="contained" size='small'>
                     <Link href='/scribes/new'>Create Scribe</Link>
                 </Button>
             </Box>
@@ -77,7 +77,7 @@ export default async function Dashboard() {
             <Grid container spacing={4} justifyContent="center" sx={{mb: 4}}>
                 {
                     metricItems.map((metric) => (
-                        <Grid key={metric.label} item xs={8} md={4}>
+                        <Grid key={metric.label} item xs={11} md={4}>
                             <Card variant="outlined" sx={{ minWidth: 200 }}>
                                 <CardContent>
                                     <Typography variant='h4' fontWeight='bold' gutterBottom>
