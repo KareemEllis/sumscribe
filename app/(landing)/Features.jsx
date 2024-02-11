@@ -10,17 +10,17 @@ import DownloadIcon from '@mui/icons-material/Download'
 export default function Features() {
     const featureItems = [
         {
-            icon: <TranscribeIcon color='primary' sx={{ fontSize: '50px' }}/>,
+            icon: <TranscribeIcon color='secondary' sx={{ fontSize: '50px' }}/>,
             title: 'Transcription',
             description: 'SumScribe integrates transcription AI, ensuring minimal latency and high accuracy. Capture every detail effortlessly, allowing you to focus on understanding without missing crucial information.'
         },
         {
-            icon: <SummarizeIcon color='primary' sx={{ fontSize: '50px' }}/>,
+            icon: <SummarizeIcon color='secondary' sx={{ fontSize: '50px' }}/>,
             title: 'Summarization',
             description: 'Sumscribe integrates an intelligent summarization algoritm to analyze transcribed textand generate concise and coherent summaries.'
         },
         {
-            icon: <DownloadIcon color='primary' sx={{ fontSize: '50px' }}/>,
+            icon: <DownloadIcon color='secondary' sx={{ fontSize: '50px' }}/>,
             title: 'Download',
             description: 'Manage and download your scribes for easy offline access.'
         }

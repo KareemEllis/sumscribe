@@ -12,7 +12,7 @@ export default function CallToAction() {
                 textAlign: 'center',
                 p: 4,
                 mt: 8,
-                backgroundColor: '#2a9d8f',
+                backgroundColor: '#060023',
                 borderRadius: 2,
             }}
         >
@@ -39,7 +39,7 @@ export default function CallToAction() {
                 endIcon={<ChevronRightIcon />}
                 sx={{ 
                     backgroundColor: '#fff', 
-                    color: '#2a9d8f',
+                    color: '#060023',
                     ':hover': { backgroundColor: '#ddd'  }
                 }}
             >
