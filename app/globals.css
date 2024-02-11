@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body .w-md-editor-text-pre > code,
+body .w-md-editor-text-input {
+  font-size: 20px !important;
+  line-height: 24px !important;
+}
+
+body .w-md-editor-toolbar li svg {
+  width: 20px;
+  height: 20px;
+}

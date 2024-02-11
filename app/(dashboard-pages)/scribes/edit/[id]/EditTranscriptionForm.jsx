@@ -16,6 +16,8 @@ import StarIcon from '@mui/icons-material/Star'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
 
 import DeleteTranscription from '@/app/components/DeleteTranscription'
+import MarkdownEditor from './MarkdownEditor'
+import ViewSummary from '@/app/components/ViewSummary'
 
 export default function EditTranscriptionForm({ transcription }) {
     const router = useRouter()
@@ -165,7 +167,7 @@ export default function EditTranscriptionForm({ transcription }) {
                 error={errors.title.error}
                 label="Title"
                 helperText={errors.title.text}
-                variant="filled"
+                variant="outlined"
                 fullWidth
                 sx={{ mb: 3 }}
             />
@@ -182,9 +184,8 @@ export default function EditTranscriptionForm({ transcription }) {
                     value={transcriptionText}
                     onChange={(e) => setTranscriptionText(e.target.value)}
                     error={errors.transcriptionText.error}
-                    label="Transcription"
                     helperText={errors.transcriptionText.text}
-                    variant="filled"
+                    variant="outlined"
                     fullWidth
                     multiline
                     rows={15}
@@ -194,18 +195,23 @@ export default function EditTranscriptionForm({ transcription }) {
 
                 {/* Tab for Summary Text Field */}
                 {selectedTab == 1 && transcription.summary &&
-                <TextField
-                    value={summary}
-                    onChange={(e) => setSummary(e.target.value)}
-                    error={errors.summary.error}
-                    label="Summary"
-                    helperText={errors.summary.text}
-                    variant="filled"
-                    fullWidth
-                    multiline
-                    rows={15}
-                />
+                // <TextField
+                //     value={summary}
+                //     onChange={(e) => setSummary(e.target.value)}
+                //     error={errors.summary.error}
+                //     helperText={errors.summary.text}
+                //     variant="outlined"
+                //     fullWidth
+                //     multiline
+                //     rows={15}
+                // />
+                <div>
+                    <MarkdownEditor summary={summary} setSummary={setSummary} />
+                    <ViewSummary summary={summary} />
+                </div>
                 }
+
+
                 {/* No Summary created yet */}
                 {selectedTab == 1 && !transcription.summary &&
                 <Box textAlign='center' width='100%' mt={8} mb={8}>
@@ -224,6 +230,8 @@ export default function EditTranscriptionForm({ transcription }) {
                 }
             </Box>
             
+
+
             <Box sx={{ mb: 2 }}>
                 <Button 
                     size="small" 
@@ -240,9 +248,6 @@ export default function EditTranscriptionForm({ transcription }) {
                 Favorite
                 </Button>
             </Box>
-
-            
-            
 
             <Button 
                 variant="contained" 

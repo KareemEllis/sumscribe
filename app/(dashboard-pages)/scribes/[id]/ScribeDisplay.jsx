@@ -16,6 +16,7 @@ import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import Snackbar from '@mui/material/Snackbar'
 
+import ViewSummary from '@/app/components/ViewSummary'
 import DeleteTranscription from '@/app/components/DeleteTranscription'
 
 export default function ScribeDisplay({ data }) {
@@ -87,9 +88,10 @@ export default function ScribeDisplay({ data }) {
 
                 {/* Tab for Summary Text Field */}
                 {selectedTab == 1 && data.summary &&
-                <Typography variant="body1" gutterBottom>
-                    {data.summary}
-                </Typography>
+                // <Typography variant="body1" gutterBottom>
+                //     {data.summary}
+                // </Typography>
+                <ViewSummary summary={data.summary} />
                 }
                 {/* No Summary created yet */}
                 {selectedTab == 1 && !data.summary &&
