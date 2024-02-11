@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Container from '@mui/material/Container'
 import Navbar from './Navbar'
 import Hero from './Hero'
