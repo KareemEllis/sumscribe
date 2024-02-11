@@ -38,7 +38,7 @@ export default function Features() {
                     featureItems.map((feature, index) => (
                         <Grid 
                             key={feature.title} 
-                            item xs={7} 
+                            item xs={11} 
                             md={4}
                             sx={{ 
                                 marginTop: { md: 
