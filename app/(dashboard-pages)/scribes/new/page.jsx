@@ -18,10 +18,6 @@ import ScribeProgressSnackbar from './ScribeProgressSnackbar'
 
 import ReactAudioPlayer from 'react-audio-player'
 
-export const metadata = {
-    title: 'Sumscribe | Transcribe'
-}
-
 export default function CreateScribe() { 
     const router = useRouter()
     const [isSubmitting, setIsSubmitting] = useState(false)
