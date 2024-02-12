@@ -13,7 +13,7 @@ export default function Hero() {
                 </Typography>
                 <Typography variant="subtitle1" my={3} color='#4a4949'>
                     Revolutionize your educational journey with SumScribe, 
-                    the cutting-edge Voice-to-Text Summarization app. 
+                    the cutting-edge <Typography variant="span" fontWeight='bold'>Voice-to-Text</Typography> Summarization app. 
                     Say goodbye to traditional note-taking hurdles 
                     and welcome a world where every lecture becomes a captivating experience.
                 </Typography>
