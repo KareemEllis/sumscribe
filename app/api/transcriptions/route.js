@@ -37,8 +37,8 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Data missing in the request.' }, { status: 400 })
         }
 
-        // Ensure file size is under 25MB
-        if (audioFile.size > 25 * 1024 * 1024) {
+        // Ensure file size is under 50MB
+        if (audioFile.size > 50 * 1024 * 1024) {
             return NextResponse.json({ error: 'Please upload an audio file less than 25MB' }, { status: 400 })
         }
 

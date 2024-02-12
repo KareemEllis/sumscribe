@@ -61,8 +61,8 @@ export default function CreateScribe() {
             setSelectedFileError(true)
             setSelectedFileErrorText('Audio File Required')
         }
-        // Check if audio file is under 25MB
-        else if (selectedFile.size > 25 * 1024 * 1024) {
+        // Check if audio file is under 50MB
+        else if (selectedFile.size > 50 * 1024 * 1024) {
             numErrors+=1
             setSelectedFileError(true)
             setSelectedFileErrorText('Please upload an audio file less than 25MB')
