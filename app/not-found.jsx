@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
@@ -13,16 +12,7 @@ export default function NotFound() {
             <Typography variant="h1" fontSize={180} fontWeight='bold' color={'primary'}>
                 404
             </Typography>
-            <Image 
-                src={'/SumscribeLogo.png'} 
-                alt={'Sumscribe Logo'} 
-                width={64} 
-                height={64}
-                style={{ 
-                    margin: 'auto',
-                    marginBottom: 16
-                }}
-            />
+
             <Typography variant="h4" fontWeight='bold' sx={{ mb: 2 }}>
                 Page Not Found
             </Typography>
