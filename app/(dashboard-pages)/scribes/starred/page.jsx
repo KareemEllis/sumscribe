@@ -7,6 +7,10 @@ import TranscriptionListing from '@/app/components/TranscriptionListing'
 
 import { getAllTranscriptions } from '@/data/transcription'
 
+export const metadata = {
+    title: 'Sumscribe | Favorites'
+}
+
 export default async function StarredTranscriptions() {
     const transcriptions = await getAllTranscriptions()
 

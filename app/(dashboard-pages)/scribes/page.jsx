@@ -7,6 +7,10 @@ import TranscriptionListing from '@/app/components/TranscriptionListing'
 
 import { getAllTranscriptions } from '@/data/transcription'
 
+export const metadata = {
+    title: 'Sumscribe | Scribes'
+}
+
 export default async function Scribes() {
     const transcriptions = await getAllTranscriptions()
 

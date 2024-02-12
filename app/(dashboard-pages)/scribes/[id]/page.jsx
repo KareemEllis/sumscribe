@@ -7,6 +7,15 @@ import Typography from '@mui/material/Typography'
 import ScribeDisplay from './ScribeDisplay'
 import { getTranscription } from '@/data/transcription'
 
+
+export async function generateMetadata({ params }) {
+    const transcription = await getTranscription(parseInt(params.id))
+  
+    return {
+      title: `Sumscribe | ${transcription?.title || 'Scribe not Found'}`
+    }
+}
+
 export default async function ScribeDetails({ params }) {
     const transcription = await getTranscription(parseInt(params.id))
 
