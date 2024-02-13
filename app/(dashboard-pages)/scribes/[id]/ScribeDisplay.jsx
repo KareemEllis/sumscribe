@@ -81,7 +81,7 @@ export default function ScribeDisplay({ data }) {
             console.error('Error:', error)
             setIsSubmitting(false)
             setSnackbarOpen(true)
-            setSnackbarText('Summarization Failed')
+            setSnackbarText('Internal Server Error')
         }
         
     }

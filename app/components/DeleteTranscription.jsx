@@ -46,6 +46,8 @@ export default function DeleteTranscription({ id, isSubmitting, setIsSubmitting 
             }
         } catch (error) {
             console.log(error)
+            setSnackbarOpen(true)
+            setSnackbarText('Internal Server Error')
         }
     }
 

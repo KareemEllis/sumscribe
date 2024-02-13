@@ -135,7 +135,7 @@ export default function CreateScribe() {
             console.error('Error:', error)
             setIsSubmitting(false)
             setSnackbarOpen(true)
-            setSnackbarText('transcription Failed')
+            setSnackbarText('Internal Server Error')
         }
     }
 

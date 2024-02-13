@@ -123,7 +123,7 @@ export default function EditTranscriptionForm({ transcription }) {
         } catch (error) {
             console.error('Error:', error)
             setSnackbarOpen(true)
-            setSnackbarText('Edit Failed')
+            setSnackbarText('Internal Server Error')
         }
     }
 
@@ -159,7 +159,7 @@ export default function EditTranscriptionForm({ transcription }) {
             console.error('Error:', error)
             setIsSubmitting(false)
             setSnackbarOpen(true)
-            setSnackbarText('Summarization Failed')
+            setSnackbarText('Internal Server Error')
         }
         
     }
