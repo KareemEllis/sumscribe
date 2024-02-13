@@ -13,7 +13,7 @@ import { Redis } from '@upstash/redis' // see below for cloudflare and fastly ad
 // Create a new ratelimiter, that allows 10 requests per 10 seconds
 const summarizeRatelimit = new Ratelimit({
     redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(3, '1 d'),
+    limiter: Ratelimit.slidingWindow(5, '1440 m'),
     analytics: true,
 })
 
