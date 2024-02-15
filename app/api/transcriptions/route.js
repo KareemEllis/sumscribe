@@ -43,9 +43,14 @@ export async function POST(req) {
         }
 
         // Check if the file is an audio file with allowed types
-        if (!/^audio\/(mp3|mp4|mpeg|m4a|wav)$/.test(audioFile.type)) {
-            return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mp4, mpeg, m4a, wav)' }, { status: 400 })
+        if (!/(?i:^.*\.(mp3|mpeg|wav|m4a)$)/gm.test(audioFile.type)) {
+            return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mpeg, wav, m4a)' }, { status: 400 })
         }
+
+        // Check if the file is an audio file with allowed types
+        // if (!/^audio\/(mp3|mp4|mpeg|m4a|wav)$/.test(audioFile.type)) {
+        //     return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mp4, mpeg, m4a, wav)' }, { status: 400 })
+        // }
 
         const formData = new FormData()
         formData.append('model', 'whisper-1')
