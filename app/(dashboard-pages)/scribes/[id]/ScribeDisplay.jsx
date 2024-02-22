@@ -18,6 +18,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import Snackbar from '@mui/material/Snackbar'
 import DownloadIcon from '@mui/icons-material/Download'
 
+import ScribeProgressSnackbar from '@/app/components/ScribeProgressSnackbar'
 import ViewSummary from '@/app/components/ViewSummary'
 import DeleteTranscription from '@/app/components/DeleteTranscription'
 
@@ -27,6 +28,8 @@ export default function ScribeDisplay({ data }) {
 
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarText, setSnackbarText] = useState('')
+
+    const [progressSnackbarOpen, setProgressSnackbarOpen] = useState(false)
 
     const [rateLimitAlert, setRateLimitAlert] = useState(false)
 
@@ -54,10 +57,13 @@ export default function ScribeDisplay({ data }) {
         console.log('Summarizing')
         try {
             setIsSubmitting(true)
+            setProgressSnackbarOpen(true)
+
             const response = await fetch(`/api/summarize/${data.id}`, {
                 method: 'POST'
             })
             setIsSubmitting(false)
+            setProgressSnackbarOpen(false)
 
             if (response.ok) {
                 const result = await response.json()
@@ -72,6 +78,7 @@ export default function ScribeDisplay({ data }) {
                 console.error('Error:',  result.error)
                 setSnackbarOpen(true)
                 setSnackbarText(result.error)
+                setProgressSnackbarOpen(false)
 
                 if (response.status == 429) {
                     setRateLimitAlert(true)
@@ -185,6 +192,8 @@ export default function ScribeDisplay({ data }) {
                     </IconButton>
                 }
             />
+
+            <ScribeProgressSnackbar progressSnackbarOpen={progressSnackbarOpen} setSnackbarOpen={setProgressSnackbarOpen}/>
         </>
     )
 }

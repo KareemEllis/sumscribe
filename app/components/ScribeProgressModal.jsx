@@ -20,7 +20,7 @@ export default function ScribeProgressModal({ modalOpen, handleModalClose }) {
                 <DialogTitle>{'Please Wait...'}</DialogTitle>
                 <DialogContent sx={{ paddingX:5, marginY:2 }}>
                     <DialogContentText>
-                        <CircularProgress size='20px' sx={{mr:1}}/> Working on audio file
+                        <CircularProgress size='20px' sx={{mr:1}}/> Please wait...
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

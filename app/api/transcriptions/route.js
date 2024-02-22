@@ -7,7 +7,7 @@ require('dotenv').config()
 import { Ratelimit } from '@upstash/ratelimit' // for deno: see above
 import { Redis } from '@upstash/redis' // see below for cloudflare and fastly adapters
 
-// Create a new ratelimiter, that allows 10 requests per 10 seconds
+// Create a new ratelimiter, that allows 1 requests per 1 day
 const transcribeRatelimit = new Ratelimit({
     redis: Redis.fromEnv(),
     limiter: Ratelimit.slidingWindow(5, '1440 m'),
@@ -42,16 +42,10 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Please upload an audio file less than 25MB' }, { status: 400 })
         }
 
-        console.log(audioFile.type)
         // Check if the file is an audio file with allowed types
-        if (!/(mp3|mpeg|wav|m4a)$/i.test(audioFile.type)) {
-            return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mpeg, wav, m4a)' }, { status: 400 })
+        if (!/(mp3|mpeg|wav|m4a|mp4)$/i.test(audioFile.type)) {
+            return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mpeg, wav, m4a, mp4)' }, { status: 400 })
         }
-
-        // Check if the file is an audio file with allowed types
-        // if (!/^audio\/(mp3|mp4|mpeg|m4a|wav)$/.test(audioFile.type)) {
-        //     return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mp4, mpeg, m4a, wav)' }, { status: 400 })
-        // }
 
         const formData = new FormData()
         formData.append('model', 'whisper-1')

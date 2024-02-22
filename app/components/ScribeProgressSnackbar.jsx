@@ -16,7 +16,7 @@ export default function ScribeProgressSnackbar({ progressSnackbarOpen, setSnackb
 
     const snackMessage = (
         <>
-            <CircularProgress size={'15px'} sx={{ mr: 1 }} /> Working on audio file
+            <CircularProgress size={'15px'} sx={{ mr: 1 }} /> Please wait...
         </>
     )
 

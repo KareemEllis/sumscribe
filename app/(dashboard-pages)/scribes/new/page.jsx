@@ -13,8 +13,8 @@ import Alert from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
-import ScribeProgressModal from './ScribeProgressModal'
-import ScribeProgressSnackbar from './ScribeProgressSnackbar'
+import ScribeProgressModal from '@/app/components/ScribeProgressModal'
+import ScribeProgressSnackbar from '@/app/components/ScribeProgressSnackbar'
 
 import ReactAudioPlayer from 'react-audio-player'
 
@@ -68,10 +68,10 @@ export default function CreateScribe() {
             setSelectedFileErrorText('Please upload an audio file less than 25MB')
         }
         // Check if the file is an audio file with allowed types
-        else if (!/^audio\/(mp3|mp4|mpeg|mpga|m4a|wav)$/.test(selectedFile.type)) {
+        else if (!/(mp3|mpeg|wav|m4a|mp4)$/i.test(selectedFile.type)) {
             numErrors+=1
             setSelectedFileError(true)
-            setSelectedFileErrorText('Please upload a valid audio file (mp3, mp4, mpeg, mpga, m4a, wav)')
+            setSelectedFileErrorText('Please upload a valid audio file (mp3, mpeg, wav, m4a, mp4)')
         }
 
         return numErrors
@@ -109,7 +109,6 @@ export default function CreateScribe() {
     
             setIsSubmitting(false)
             setModalOpen(false)
-            setProgressSnackbarOpen(false)
             setProgressSnackbarOpen(false)
 
             if (response.ok) {

@@ -16,6 +16,7 @@ import StarIcon from '@mui/icons-material/Star'
 import StarOutlineIcon from '@mui/icons-material/StarOutline'
 import Alert from '@mui/material/Alert'
 
+import ScribeProgressSnackbar from '@/app/components/ScribeProgressSnackbar'
 import DeleteTranscription from '@/app/components/DeleteTranscription'
 import MarkdownEditor from './MarkdownEditor'
 
@@ -32,6 +33,8 @@ export default function EditTranscriptionForm({ transcription }) {
         transcriptionText: { error: false, text: '' },
         summary: { error: false, text: '' }
     })
+
+    const [progressSnackbarOpen, setProgressSnackbarOpen] = useState(false)
 
     const [rateLimitAlert, setRateLimitAlert] = useState(false)
 
@@ -98,6 +101,8 @@ export default function EditTranscriptionForm({ transcription }) {
 
         try {
             setIsSubmitting(true)
+            setProgressSnackbarOpen(true)
+
             console.log('Fetching')
             const response = await fetch(`/api/transcriptions/${transcription.id}`, {
                 method: 'PATCH',
@@ -105,6 +110,7 @@ export default function EditTranscriptionForm({ transcription }) {
             })
 
             setIsSubmitting(false)
+            setProgressSnackbarOpen(false)
 
             if (response.ok) {
                 const result = await response.json()
@@ -123,6 +129,7 @@ export default function EditTranscriptionForm({ transcription }) {
         } catch (error) {
             console.error('Error:', error)
             setSnackbarOpen(true)
+            setProgressSnackbarOpen(false)
             setSnackbarText('Internal Server Error')
         }
     }
@@ -131,10 +138,14 @@ export default function EditTranscriptionForm({ transcription }) {
         console.log('Summarizing')
         try {
             setIsSubmitting(true)
+            setProgressSnackbarOpen(true)
+
             const response = await fetch(`/api/summarize/${transcription.id}`, {
                 method: 'POST'
             })
+
             setIsSubmitting(false)
+            setProgressSnackbarOpen(false)
 
             if (response.ok) {
                 const result = await response.json()
@@ -159,6 +170,7 @@ export default function EditTranscriptionForm({ transcription }) {
             console.error('Error:', error)
             setIsSubmitting(false)
             setSnackbarOpen(true)
+            setProgressSnackbarOpen(false)
             setSnackbarText('Internal Server Error')
         }
         
@@ -276,6 +288,8 @@ export default function EditTranscriptionForm({ transcription }) {
                     </IconButton>
                 }
             />
+
+            <ScribeProgressSnackbar progressSnackbarOpen={progressSnackbarOpen} setSnackbarOpen={setProgressSnackbarOpen}/>
         </>
     )
 }
