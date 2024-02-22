@@ -42,8 +42,9 @@ export async function POST(req) {
             return NextResponse.json({ error: 'Please upload an audio file less than 25MB' }, { status: 400 })
         }
 
+        console.log(audioFile.type)
         // Check if the file is an audio file with allowed types
-        if (!/(?i:^.*\.(mp3|mpeg|wav|m4a)$)/gm.test(audioFile.type)) {
+        if (!/(mp3|mpeg|wav|m4a)$/i.test(audioFile.type)) {
             return NextResponse.json({ error: 'Please upload a valid audio file (mp3, mpeg, wav, m4a)' }, { status: 400 })
         }
 
