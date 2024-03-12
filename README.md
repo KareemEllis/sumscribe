@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img src="https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/png/SumscribeLogoSquare.png" width="150"/>
 
-## Getting Started
+# SumScribe
 
-First, run the development server:
+[SumScribe](https://sumscribe.vercel.app/) is an AI-powered Web App designed to elevate educational experiences by utilizing advanced speech recognition and intelligent summarization to convert lectures into succinct, written notes. It offers students a powerful tool for capturing and reviewing complex academic content with ease and precision, making studying more efficient and effective.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Site
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use SumScribe [HERE](https://sumscribe.vercel.app/)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Transcription**: Utilizes OpenAI's Whisper to transcribe audio into text.
+- **Summarization**: Leverages OpenAI API for intelligent summarization of text.
+- **Edit**: Allows for the editing of transcriptions and summaries.
+- **Download**: Enables downloading of transcriptions and summaries in `.txt` and `.md` formats.
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+![SumScribe Screenshot 1](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_1.webp)
+![SumScribe Screenshot 2](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_2.webp)
+![SumScribe Screenshot 3](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_3.webp)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Built With
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+SumScribe is built with a range of modern web technologies and tools to provide a seamless and responsive user experience:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="30" /> HTML 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="30" /> CSS 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="30" /> JavaScript (JS) 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" width="30" /> Next.js 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" width="30" /> PostgreSQL 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" width="30" /> Prisma 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg" width="30" /> MUI (Material-UI) 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="30" /> GIT 
+- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="30" /> GitHub 
+- <img src="https://next-auth.js.org/img/logo/logo-sm.png" width="30" /> Next-Auth 
+- OpenAI API
+- LottieFiles
