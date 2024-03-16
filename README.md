@@ -17,9 +17,9 @@ Use SumScribe [HERE](https://sumscribe.vercel.app/)
 
 ## Screenshots
 
-![SumScribe Screenshot 1](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_1.webp)
-![SumScribe Screenshot 2](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_2.webp)
-![SumScribe Screenshot 3](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/webp/Screenshots/Sumscribe/SS_Sumscribe_3.webp)
+![SumScribe Screenshot 1](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/jpeg/Snapshots/Sumscribe/Sumscribe1.jpg)
+![SumScribe Screenshot 2](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/jpeg/Snapshots/Sumscribe/Sumscribe2.jpg)
+![SumScribe Screenshot 3](https://raw.githubusercontent.com/KareemEllis/KareemEllis.github.io/main/assets/jpeg/Snapshots/Sumscribe/Sumscribe4.jpg)
 
 ## Built With
 
