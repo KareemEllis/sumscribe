@@ -4,9 +4,9 @@
 
 [SumScribe](https://sumscribe.vercel.app/) is an AI-powered Web App designed to elevate educational experiences by utilizing advanced speech recognition and intelligent summarization to convert lectures into succinct, written notes. It offers students a powerful tool for capturing and reviewing complex academic content with ease and precision, making studying more efficient and effective.
 
-## Live Site
+<!-- ## Live Site
 
-Use SumScribe [HERE](https://sumscribe.vercel.app/)
+Use SumScribe [HERE](https://sumscribe.vercel.app/) -->
 
 ## Features
 
